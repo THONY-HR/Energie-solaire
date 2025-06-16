@@ -1,0 +1,44 @@
+<project name="Cump" default="deploy" basedir=".">
+    <property name="src.dir" value="src/main/java"/>
+    <property name="build.dir" value="build/classes"/>
+    <property name="dist.dir" value="dist"/>
+    <property name="webapp.dir" value="src/main/webapp"/>
+    
+    <property name="servlet.api.jar" value="D:/ITU DS PROM 3/S5/Programmation/EJb/EnergieSolaire/lib/servlet-api.jar"/>
+    <property name="ejb.api.jar" value="D:/ITU DS PROM 3/S5/Programmation/EJb/EnergieSolaire/lib/javax.ejb.jar"/>
+    
+    <path id="classpath">
+        <pathelement path="${servlet.api.jar}"/>
+        <pathelement path="${ejb.api.jar}"/>
+    </path>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="compile" depends="clean">
+        <mkdir dir="${build.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false">
+            <classpath refid="classpath"/>
+        </javac>
+        <!-- Copier le dossier com -->
+        <copy todir="${build.dir}/com">
+            <fileset dir="D:/ITU DS PROM 3/S5/Programmation/EJb/EnergieSolaire/lib/com"/>
+        </copy>
+        <copy todir="${build.dir}/lib">
+            <fileset dir="D:/ITU DS PROM 3/S5/Programmation/EJb/EnergieSolaire/lib"/>
+        </copy>
+    </target>
+
+    <target name="war" depends="compile">
+        <mkdir dir="${dist.dir}"/>
+        <war destfile="${dist.dir}/EnergieSolaire.war" webxml="${webapp.dir}/WEB-INF/web.xml">
+            <fileset dir="${webapp.dir}"/>
+            <classes dir="${build.dir}"/>
+        </war>
+    </target>
+
+    <target name="deploy" depends="war">
+        <copy file="${dist.dir}/EnergieSolaire.war" todir="D:/Logiciel/wildfly-10.0.0.Final/standalone/deployments"/>
+    </target>
+</project>

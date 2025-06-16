@@ -1,0 +1,32 @@
+Energiee Solaire:
+
+    Besoin:
+    charge ao atrano en heure ex:
+    tele 45W 19h ------21h
+    frigo 120W 0h -----24h
+    divers 100w 7h ---- 12h
+    panneau watt: 700ar
+    batterir watt: 800ar
+    batterie: decharge
+        -lithium: 0.7
+        -gel : 0.4
+        -tsotra: 0.8
+    pourcentage soleil par heure/saison ex:
+        6h ---- 7h: 15%
+        7h ---- 8h: 20%
+        8h ---- 16h: 70%
+        16h ---- 18h: 20%
+        18h ---- 6h: 0%
+    Panneau: izay entre 6h ----- 18h ex:
+    izay probabiliter ana poucentage soleil ambany indrindra no raisina  
+    150w*15%=22.5*6=135 comptena oe impiri no <= 150W = 6 *22.5
+
+    decharge = totalPuissanceBatterie/DechargeBatterie ex: 3225w/0.7 lithium = 4600W
+    prix total batterie = 4600W * 800 = 3.680.000Ar
+    prix total panneau + batterie = somme(batt+panneau)
+    marge d'installation (prix total panneau + batterie) * 1.20
+    totalPayer = (prix total panneau + batterie) + marge d'installation
+
+    21h ---- 5h59
+
+    
